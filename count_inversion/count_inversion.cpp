@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-vector<int>::size_type sort_and_count_split_inversions(vector<int> & vec, vector<int> & left_half, vector<int> right_half){
+vector<int>::size_type SortAndCountSplitInversions(vector<int> & vec, vector<int> & left_half, vector<int> right_half){
     vector<int>::iterator iter = vec.begin(), iter1 = left_half.begin(), iter2 = right_half.begin();
     vector<int>::size_type count(0);
     while (iter != vec.end()){
@@ -19,18 +19,18 @@ vector<int>::size_type sort_and_count_split_inversions(vector<int> & vec, vector
     return count;
 }
 
-vector<int>::size_type sort_and_count_inversions(vector<int> & vec){
+vector<int>::size_type SortAndCountInversions(vector<int> & vec){
     vector<int>::size_type size = vec.size();
     if (vec.size() == 1) return 0;
 
     vector<int>::size_type left_count, right_count, split_count;
     vector<int> left_half(vec.begin(), vec.begin()+size/2); 
-    left_count = sort_and_count_inversions(left_half);
+    left_count = SortAndCountInversions(left_half);
 
     vector<int> right_half(vec.begin()+size/2, vec.end());
-    right_count = sort_and_count_inversions(right_half);
+    right_count = SortAndCountInversions(right_half);
 
-    split_count = sort_and_count_split_inversions(vec, left_half, right_half);
+    split_count = SortAndCountSplitInversions(vec, left_half, right_half);
 
     return left_count + right_count + split_count;
 }
@@ -54,7 +54,7 @@ int main (int argc, char *argv[]){
         ivec.push_back(i);
         //cout << ivec.back()<<endl;
     }
-    vector<int>::size_type num_inversions = sort_and_count_inversions(ivec);
+    vector<int>::size_type num_inversions = SortAndCountInversions(ivec);
 
     cout << "inversion count: " << num_inversions << endl;
 

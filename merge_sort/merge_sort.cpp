@@ -3,15 +3,15 @@
 #include <vector>
 using namespace std;
 
-void merge_sort(vector<int> & vec){
+void MergeSort(vector<int> & vec){
     vector<int>::size_type size = vec.size();
     if (vec.size() == 1) return;
 
     vector<int> left_half(vec.begin(), vec.begin()+size/2); 
-    merge_sort(left_half);
+    MergeSort(left_half);
 
     vector<int> right_half(vec.begin()+size/2, vec.end());
-    merge_sort(right_half);
+    MergeSort(right_half);
 
     vector<int>::iterator iter = vec.begin(), iter1 = left_half.begin(), iter2 = right_half.begin();
     while (iter != vec.end()){
@@ -44,7 +44,7 @@ int main (int argc, char *argv[]){
         ivec.push_back(i);
         cout << ivec.back()<<endl;
     }
-    merge_sort(ivec);
+    MergeSort(ivec);
 
     vector<int>::iterator iter = ivec.begin();
     while (iter != ivec.end()){
