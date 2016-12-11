@@ -15,4 +15,4 @@ IMPLEMENTATION NOTES: This graph is small enough that the straightforward $O(mn)
 
 ## My Note
 
-Heap version not done.
+Heap version not done. The Heap.h/.cpp is not complete in this directory, a better version is in directory: median_maintenance.
